@@ -5,9 +5,13 @@
 
 <hibernate-mapping>
 	<class name="com.radhey.entity.Employee" table="empp">
-		<id name="id" />
-		<property name="name" column="emp_Name"/>
-		<property name="gender" not-null="true"/>
+		<id name="id">
+
+			<generator class="identity" />
+
+		</id>
+		<property name="name" column="emp_Name" />
+		<property name="gender" not-null="true" />
 		<property name="salary" />
 	</class>
 

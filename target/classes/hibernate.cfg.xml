@@ -10,7 +10,7 @@
 		<property name="connection.url">jdbc:mysql://localhost:3306/testDb</property>
 		<property name="connection.username">root</property>
 		<property name="connection.password">root</property>
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">update</property>
 		<property name="show_sql">true</property>
 		<property name="format_sql">true</property>
 		<mapping resource="employee.hbm.xml" />

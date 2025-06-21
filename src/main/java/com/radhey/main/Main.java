@@ -29,13 +29,17 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Employee e = new Employee(1, "Sukoon", "male", 987650);
+		Employee e = new Employee("Mukesh", "male", 987650);
 		
 		Session session = Main.getSession();
-		Transaction tx = session.beginTransaction();
 		
-		session.persist(e);
-		tx.commit();
+//		Transaction tx = session.beginTransaction();
+//		session.persist(e);
+//		tx.commit();
+		
+		
+		Employee employee = session.get(Employee.class, 13);
+		System.out.println(employee);
 		session.close();
 		
 	}
