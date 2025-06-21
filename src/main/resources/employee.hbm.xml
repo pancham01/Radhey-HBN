@@ -4,10 +4,10 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 
 <hibernate-mapping>
-	<class name="com.radhey.entity.Employee">
+	<class name="com.radhey.entity.Employee" table="empp">
 		<id name="id" />
-		<property name="name" />
-		<property name="gender" />
+		<property name="name" column="emp_Name"/>
+		<property name="gender" not-null="true"/>
 		<property name="salary" />
 	</class>
 
