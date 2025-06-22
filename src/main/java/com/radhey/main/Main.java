@@ -12,7 +12,7 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		Employee e = new Employee("Muskan", "female", 987650);
+		Employee e = new Employee("Muskan", "female", 987650,"India");
 		SessionFactory sf = HibernateConfig.getSessionFactory();
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();

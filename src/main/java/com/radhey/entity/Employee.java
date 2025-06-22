@@ -5,15 +5,20 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Transient;
 
-@Entity(name = "empp")
+@Entity
 public class Employee {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name = "emp_Name")
 	private String name;
+	
 	private String gender;
+	@Transient
+	private String country;
+	
 	private int salary;
 
 	public Employee() {
@@ -21,11 +26,20 @@ public class Employee {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Employee(String name, String gender, int salary) {
+	public Employee(String name, String gender, int salary,String country) {
 		super();
 		this.name = name;
 		this.gender = gender;
 		this.salary = salary;
+		this.country=country;
+	}
+	
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
 	}
 
 	public int getId() {
@@ -62,7 +76,8 @@ public class Employee {
 
 	@Override
 	public String toString() {
-		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", salary=" + salary + "]";
+		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", country=" + country + ", salary="
+				+ salary + "]";
 	}
 
 }
