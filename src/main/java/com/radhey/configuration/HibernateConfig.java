@@ -35,7 +35,7 @@ public class HibernateConfig {
 //		SessionFactory sessionFactory = metaDataSources.getMetadataBuilder().build().buildSessionFactory();
 		
 		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().applySettings(prop).build();
-		return new MetadataSources(ssr).addAnnotatedClass(com.radhey.entity.Employee.class).getMetadataBuilder().build().buildSessionFactory();
+		return new MetadataSources(ssr).addAnnotatedClasses(com.radhey.entity.Employee.class,com.radhey.entity.Address.class).getMetadataBuilder().build().buildSessionFactory();
 	}
 
 }
