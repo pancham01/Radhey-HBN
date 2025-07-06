@@ -4,25 +4,43 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Address {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	int id;
+	private int id;
 	
-	String city,state;
+	private String city,state;
+	
+	@OneToOne(mappedBy = "address")
+	private Employee emp;
+	
 	
 	public Address() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Address(String city, String state) {
+	
+	
+	
+	public Address(int id, String city, String state, Employee emp) {
 		super();
+		this.id = id;
 		this.city = city;
 		this.state = state;
+		this.emp = emp;
 	}
+	public Employee getEmp() {
+		return emp;
+	}
+
+	public void setEmp(Employee emp) {
+		this.emp = emp;
+	}
+
 	public int getId() {
 		return id;
 	}

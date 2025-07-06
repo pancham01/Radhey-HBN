@@ -22,13 +22,16 @@ public class Main {
 		Address address = session.get(Address.class, 1);
 
 		System.out.println(address);
+		System.out.println(address.getEmp());
 		
 		
 	}
 
 	public static void main(String[] args) {
 
-		Address add1 = new Address("Noida", "UP");
+		Address add1 = new Address();
+		add1.setCity("GZB");
+		add1.setState("UK");
 
 		Employee e = new Employee();
 		e.setName("Amir Khan");
@@ -36,16 +39,21 @@ public class Main {
 		e.setSalary(222222);
 		e.setGender("M");
 		e.setAddress(add1);
-
+		add1.setEmp(e);
+		
 		SessionFactory sf = HibernateConfig.getSessionFactory();
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();
 
-//		session.persist(add1);
+		
+		session.persist(add1);
 		
 		session.persist(e);
 		
 		tx.commit();
+		
+		getObjects(session);
+
 
 		session.close();
 

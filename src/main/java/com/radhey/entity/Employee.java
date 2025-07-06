@@ -1,11 +1,11 @@
 package com.radhey.entity;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Transient;
 
@@ -23,7 +23,8 @@ public class Employee {
 	
 	private int salary;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne//(cascade = CascadeType.ALL)
+	@JoinColumn(name = "relation")
 	private Address address;
 	
 
