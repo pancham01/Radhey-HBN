@@ -4,7 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Address {
@@ -15,7 +15,7 @@ public class Address {
 	
 	private String city,state;
 	
-	@OneToOne(mappedBy = "address")
+	@ManyToOne
 	private Employee emp;
 	
 	
@@ -26,20 +26,20 @@ public class Address {
 	
 	
 	
-	public Address(int id, String city, String state, Employee emp) {
-		super();
-		this.id = id;
+	public Address(String city, String state, Employee emp) {
 		this.city = city;
 		this.state = state;
 		this.emp = emp;
 	}
+
 	public Employee getEmp() {
 		return emp;
 	}
 
+
 	public void setEmp(Employee emp) {
 		this.emp = emp;
-	}
+	}
 
 	public int getId() {
 		return id;

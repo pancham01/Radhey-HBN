@@ -1,5 +1,8 @@
 package com.radhey.main;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
@@ -28,34 +31,52 @@ public class Main {
 	}
 
 	public static void main(String[] args) {
-
-		Address add1 = new Address();
-		add1.setCity("GZB");
-		add1.setState("UK");
-
 		Employee e = new Employee();
 		e.setName("Amir Khan");
 		e.setCountry("india");
 		e.setSalary(222222);
 		e.setGender("M");
-		e.setAddress(add1);
-		add1.setEmp(e);
+		
+		
+		Address add1 = new Address("GZB","UP",e);
+		Address add2 = new Address("Noida","UP",e);
+		Address add3 = new Address("Meerut","UP",e);
+		Address add4 = new Address("Lahore","UP",e);
+		
+		List<Address> addresses = new ArrayList<Address>();
+		addresses.add(add1);
+		addresses.add(add2);
+		addresses.add(add3);
+		addresses.add(add4);
+		
+		
+
+		
+//		e.setAddresses(List.of(add1, add2, add3, add4));
+		e.setAddresses(addresses);
 		
 		SessionFactory sf = HibernateConfig.getSessionFactory();
 		Session session = sf.openSession();
 		Transaction tx = session.beginTransaction();
 
-		
-		session.persist(add1);
-		
 		session.persist(e);
+
+		session.persist(add1);
+		session.persist(add2);
+		session.persist(add3);
+		session.persist(add4);
+		
 		
 		tx.commit();
 		
-		getObjects(session);
 
 
 		session.close();
+		
+		session = sf.openSession();
+		
+		getObjects(session);
+
 
 	}
 

@@ -24,15 +24,6 @@ public class HibernateConfig {
 		prop.put(Environment.SHOW_SQL,"true");
 		prop.put(Environment.FORMAT_SQL,"true");
 
-//		In XML based configuration		
-//		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().configure().build();
-//		Metadata metadata = new MetadataSources(ssr).getMetadataBuilder().build();
-//		SessionFactory sessionFactory = metadata.buildSessionFactory();
-		
-//		In Java based configuration		
-//		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().applySettings(prop).build();
-//		MetadataSources metaDataSources =	new MetadataSources(ssr).addAnnotatedClass(com.radhey.entity.Employee.class);
-//		SessionFactory sessionFactory = metaDataSources.getMetadataBuilder().build().buildSessionFactory();
 		
 		StandardServiceRegistry ssr = new StandardServiceRegistryBuilder().applySettings(prop).build();
 		return new MetadataSources(ssr).addAnnotatedClasses(com.radhey.entity.Employee.class,com.radhey.entity.Address.class).getMetadataBuilder().build().buildSessionFactory();

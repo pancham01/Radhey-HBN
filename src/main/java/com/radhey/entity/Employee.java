@@ -1,12 +1,13 @@
 package com.radhey.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Transient;
 
 @Entity
@@ -23,29 +24,28 @@ public class Employee {
 	
 	private int salary;
 	
-	@OneToOne//(cascade = CascadeType.ALL)
-	@JoinColumn(name = "relation")
-	private Address address;
+	@OneToMany(mappedBy = "emp")
+	private List<Address> addresses;
 	
 
 	public Employee() {
 		super();
 	}
 
-	public Employee(String name, String gender, String country, int salary, Address address) {
+	public Employee(String name, String gender, String country, int salary, List<Address> addresses) {
 		this.name = name;
 		this.gender = gender;
 		this.country = country;
 		this.salary = salary;
-		this.address = address;
+		this.addresses = addresses;
 	}
 
-	public Address getAddress() {
-		return address;
+	public List<Address> getAddresses() {
+		return addresses;
 	}
 
-	public void setAddress(Address address) {
-		this.address = address;
+	public void setAddresses(List<Address> addresses) {
+		this.addresses = addresses;
 	}
 
 	public String getCountry() {
@@ -91,7 +91,7 @@ public class Employee {
 	@Override
 	public String toString() {
 		return "Employee [id=" + id + ", name=" + name + ", gender=" + gender + ", country=" + country + ", salary="
-				+ salary + ", address=" + address + "]";
+				+ salary + ", addresses=" + addresses + "]";
 	}
 
 	
